@@ -1,29 +1,34 @@
 const menber=["daiki","kouhei","taisei","rina","yuta","9638","yusuke","syunsuke","yuya",
 "mana","yukino","mahiro","mayu"];
+const menber2=["daiki","kouhei","taisei","rina","yuta","9638","yusuke","syunsuke","yuya",
+"mana","yukino","mahiro","mayu"];
 
-let makeArray = [];
-let n = 0;
+let randamArray = [];
+let n = 0, i = 0;
+let start;
 
-for(i=1; i<=13; i++){
-    while(true){
-        let selectPerson = Math.floor(Math.random() * (13));
-        if (!makeArray.includes(selectPerson)) {
-            makeArray.push(selectPerson);
-            break;
-        }
-    }
-    }
-    console.log(makeArray);
+//スタートを押したときの挙動。次々に名前を表示（ループが出来ない）
+function startRoulette() {
+    start = setInterval(() => {
+        document.getElementById("name").textContent = menber2[i++];
+        if(i==menber2.length) i=0; 
+    }, 100);
+    //ボタンを連続表示出来なくする
+    const startButton = document.getElementById("start");
+    startButton.disabled = true;
+    const stopButton = document.getElementById("stop");
+    stopButton.disabled = false;
+}
 
-
-
-function onButtonClick() {
-
-    let select = menber[makeArray[n]];
-    console.log(select);
-    console.log(makeArray[n]);
-document.getElementById('name').textContent = select;
-delete menber[makeArray[n]];
-n = n + 1;
-console.log(menber);
+//ストップを押したときの挙動。名前確定
+function stopRoulette() {
+    clearInterval(start);
+    let selectNum = Math.floor(Math.random()*(menber.length));
+    document.getElementById('name').textContent = menber[selectNum];
+    menber.splice(selectNum,1);
+    //ボタンを連続表示できなくする
+    const startButton = document.getElementById("start");
+    startButton.disabled = false;
+    const stopButton = document.getElementById("stop");
+    stopButton.disabled = true;
 }
