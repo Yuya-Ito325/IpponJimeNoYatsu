@@ -7,26 +7,26 @@ let randamArray = [];
 let n = 0, i = 0;
 let start;
 
-//ƒXƒ^[ƒg‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ì‹““®BŸX‚É–¼‘O‚ğ•\¦iƒ‹[ƒv‚ªo—ˆ‚È‚¢j
+//ã‚¹ã‚¿ãƒ¼ãƒˆã‚’æŠ¼ã—ãŸã¨ãã®æŒ™å‹•ã€‚æ¬¡ã€…ã«åå‰ã‚’è¡¨ç¤º(ãƒ«ãƒ¼ãƒ—ãŒã§ããªã„)
 function startRoulette() {
     start = setInterval(() => {
         document.getElementById("name").textContent = menber2[i++];
         if(i==menber2.length) i=0; 
     }, 100);
-    //ƒ{ƒ^ƒ“‚ğ˜A‘±•\¦o—ˆ‚È‚­‚·‚é
+    //ãƒœã‚¿ãƒ³ã‚’é€£ç¶šè¡¨ç¤ºã§ããªãã™ã‚‹
     const startButton = document.getElementById("start");
     startButton.disabled = true;
     const stopButton = document.getElementById("stop");
     stopButton.disabled = false;
 }
 
-//ƒXƒgƒbƒv‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ì‹““®B–¼‘OŠm’è
+//ã‚¹ãƒˆãƒƒãƒ—ã‚’æŠ¼ã—ãŸæ™‚ã®æŒ™å‹•ã€‚åå‰ç¢ºå®š
 function stopRoulette() {
     clearInterval(start);
     let selectNum = Math.floor(Math.random()*(menber.length));
     document.getElementById('name').textContent = menber[selectNum];
     menber.splice(selectNum,1);
-    //ƒ{ƒ^ƒ“‚ğ˜A‘±•\¦‚Å‚«‚È‚­‚·‚é
+    //ãƒœã‚¿ãƒ³ã‚’é€£ç¶šè¡¨ç¤ºã§ããªãã™ã‚‹
     const startButton = document.getElementById("start");
     startButton.disabled = false;
     const stopButton = document.getElementById("stop");
